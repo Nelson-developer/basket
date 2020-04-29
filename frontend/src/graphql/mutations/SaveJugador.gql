@@ -1,0 +1,19 @@
+mutation(
+    $id: ID
+    $nombreJugador: String
+    $posicion: String
+    $imagen: String
+    $edad: Int
+    $altura: Int
+){
+  saveJugador(
+    id: $id
+    nombreJugador: $nombreJugador
+    posicion: $posicion
+    imagen: $imagen
+    edad: $edad
+    altura: $altura
+  ){
+    ok
+  }
+}

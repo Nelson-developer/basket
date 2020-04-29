@@ -1,0 +1,15 @@
+mutation(
+    $nombreEquipo: String
+    $entrenador: String
+    $categoria: String
+    $logo: String
+){
+    saveEquipo(
+    nombreEquipo: $nombreEquipo
+    entrenador: $entrenador
+    categoria: $categoria
+    logo: $logo
+  ){
+    ok
+  }
+} 

@@ -1,0 +1,11 @@
+query EquipoJugadores($_id: ID) {
+  EquipoJugadores(_id: $_id) {
+    jugadores {
+       _id
+      nombre
+      posicion
+      edad
+      altura
+    }
+  }
+}

@@ -1,0 +1,7 @@
+query($categoria: String!){
+  EquiposPorCategoria(categoria: $categoria) {
+      Id
+    entrenador
+    nombreEquipo
+  }
+} 
