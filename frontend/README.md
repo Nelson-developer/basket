@@ -1,4 +1,4 @@
-# basket-interfaz
+# frontend
 
 ## Project setup
 ```
