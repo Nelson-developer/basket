@@ -75,7 +75,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/tablero-ruta.vue')
   },
   {
-    path: '/seleccion',
+    path: '/seleccion/:idcategoria',
     name: 'seleccion',
     // route level co1de-splitting
     // this generates a separate chunk (about.[hash].js) for this route

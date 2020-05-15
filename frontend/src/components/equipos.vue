@@ -4,20 +4,17 @@
     <ApolloQuery :query="require('@/graphql/queries/equipoCategoria.gql')" :variables="{ categoria: idCategoria }">
   
       <template slot-scope="{ result: { data, loading }, isLoading }">
-        <!-- Luego de hacer la consulta a graphql pasaremos a pintar los datos -->
-        <div v-if="isLoading" class="text-center text-primary mt-4"><!--evento de carga spinner -->
-           <div class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
+        <div v-if="isLoading" class="text-center text-primary mt-4">
+          <!--evento de carga spinner -->
+        <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
          </div>
       </div>
+
         <div class="album py-5 bg-light" v-else>
           <div class="container">
             <div class="row">
-              <div
-                class="col-md-6"
-                v-for="d of data.EquiposPorCategoria"
-                :key="d.Id"
-              >
+              <div class="col-md-6" v-for="d of data.EquiposPorCategoria" :key="d.Id">
                 <router-link :to="/jugadores/ + d.Id">
                   <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">

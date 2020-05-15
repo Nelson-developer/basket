@@ -12,4 +12,4 @@ export async function ConectarDB() {
         console.log('error al conectarse a la base de datos');
         
     }
-}
+}   

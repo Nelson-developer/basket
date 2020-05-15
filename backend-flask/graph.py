@@ -12,7 +12,7 @@ client = MongoClient('mongodb://localhost:27017')
 # nombre de la base de datos
 db = client['basket']
 equipos = db['equipos']
-partidos = db['partidos']
+partidos = db['partidos'] 
 
 
 class Jugador(graphene.ObjectType):
@@ -61,6 +61,9 @@ class JugadorRespuesta(graphene.ObjectType):
     _id = graphene.ID()
     jugadores = graphene.List(Jugador)
 
+class Categorias(graphene.ObjectType):
+    categoria = graphene.List(graphene.String)
+
 class Query(graphene.ObjectType):
     hello = graphene.String()
     equipos = graphene.List(Equipo)
@@ -68,6 +71,7 @@ class Query(graphene.ObjectType):
     EquiposPorCategoria = graphene.List(Equipo, categoria=graphene.String())
     EquipoJugadores = graphene.List(Equipo, _id=graphene.ID())
     UnJugador = graphene.List(JugadorRespuesta, idjugador=graphene.ID())
+    categorias = graphene.List(Categorias)
 
     def resolve_equipos(self, info):
         data = equipos.find()
@@ -87,11 +91,20 @@ class Query(graphene.ObjectType):
         data = equipos.find({"_id": ObjectId(str(_id))})
         print(data)
         return data
+
     def resolve_UnJugador(self,info,idjugador):
         data = equipos.find({"jugadores._id": ObjectId(str(idjugador))}, { "jugadores.$" : True})
         print(data)
         return data
 
+    def resolve_categorias(self,info):
+        data = equipos.distinct("categoria") #devuelve todas las categorias sin repetirse
+        response = [{
+            "categoria": data
+        }]
+        return response
+
+    
 # mutations
 
 
